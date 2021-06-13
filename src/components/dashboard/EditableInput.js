@@ -29,6 +29,7 @@ const EditableInput = ( {
 
             if(trimmed === ''){
                 Alert.info(emptyMsg, 4000)
+                return
             }
 
             if(trimmed !== initialValue){

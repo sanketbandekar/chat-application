@@ -12,7 +12,7 @@ function assembleMessage(profile, chatId) {
             name: profile.name,
             uid: profile.uid,
             createdAt: profile.createdAt,
-            ...(profile.avator ? { avator: profile.avator } : {})
+            ...(profile.avatar ? { avatar: profile.avatar } : {})
         },
         createdAt: firebase.database.ServerValue.TIMESTAMP
     }

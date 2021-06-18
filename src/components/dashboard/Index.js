@@ -2,6 +2,7 @@ import React from 'react'
 import { Alert, Button, Divider, Drawer } from 'rsuite'
 import {  useProfile } from '../../context/profile.context'
 import { database } from '../../misc/firebase';
+import { getUserUpdate } from '../../misc/helper';
 import AvatarUploadBtn from './AvatarUploadBtn';
 import EditableInput from './EditableInput';
 import ProviderBlock from './ProviderBlock';
@@ -11,10 +12,15 @@ const Dashboard = ( { onSignOut } ) => {
     const { profile } = useProfile();
 
     const onSave = async (newData) => {
-        const userNickName = database.ref(`profiles/${profile.uid}`).child('name');
+        
 
         try {
-            userNickName.set(newData);
+            
+
+            const updates = await getUserUpdate(profile.uid, 'name', newData, database)
+
+            await database.ref().update(updates)
+
             Alert.info('Nickname Uodated', 4000)
         } catch (error) {
             Alert.error(error.mssage,4000 )

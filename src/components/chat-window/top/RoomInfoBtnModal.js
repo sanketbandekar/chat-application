@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Button, Modal } from 'rsuite'
 import { useCurrentRoom } from '../../../context/current-room.context'
 import { useModalState } from '../../../misc/custom-hook'
@@ -34,4 +34,4 @@ const RoonInfoBtnModal = () => {
     )
 }
 
-export default RoonInfoBtnModal
+export default memo(RoonInfoBtnModal)
